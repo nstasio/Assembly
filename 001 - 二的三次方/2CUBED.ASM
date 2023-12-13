@@ -13,7 +13,7 @@
 	mov ax,@data
 	mov ds,ax
 
-	mov al,02h ;set al value to 2
+	mov ax,0902h ;set al value to 2, set ah to output a string at DS:DX when int 21h is called
 	call PRINTDEBUG
 
 	add al,al ;adds al to itself, which is 02+02
@@ -29,7 +29,6 @@ PRINTDEBUG PROC
 	;hacky way of displaying the values with minimal code
 	;this only works with single digit numbers
 	push ax
-	mov ah,9   ;outputs a string located at DS:DX, terminates when it reaches $
 	mov dx,offset debug
 	int 21h
 
