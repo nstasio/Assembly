@@ -100,3 +100,7 @@ In this folder, I recorded notes and codes for learning assembly language in the
 将int型数值转换为string字符串时，在进行除10取余时，每显示完一个字符，记得将储存高位字节的dx清零
 
 在编写子程序时，可在程序开头处将程序中用到的寄存器进行push，在ret前再进行pop，这样就不用考虑是否会影响到程序外的寄存器（注意push和pop的顺序）
+---
+Fork changes:
+Adding English annotations, changing filenames to ASCII 8.3 names, and adding some debug output.
+Please note, any English annotations are not translations, my Chinese is not good enough for that. They're just my own notes.
