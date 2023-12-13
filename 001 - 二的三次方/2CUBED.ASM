@@ -8,6 +8,7 @@
 
 .DATA
 	debug db "AL value: 0x0","$"
+	newline db 13,10,"$"
 
 .CODE
 	mov ax,@data
@@ -15,9 +16,15 @@
 
 	mov ax,0902h ;set al value to 2, set ah to output a string at DS:DX when int 21h is called
 	call PRINTDEBUG
+	
+	mov dx,offset newline
+	int 21h
 
 	add al,al ;adds al to itself, which is 02+02
 	call PRINTDEBUG
+	
+	mov dx,offset newline
+	int 21h
 
 	add al,al ;adds al to itself again, which is now 04+04
 	call PRINTDEBUG
@@ -35,11 +42,6 @@ PRINTDEBUG PROC
 	mov ah,0Eh ;prints a single character
 	add al,30h ;30-39 are the ASCII codes for 0-9
 	int 10h    ;print character
-
-	mov al,0Dh ;carriage return
-	int 10h
-	mov al,0Ah ;line feed
-	int 10h
 
 	pop ax
 ret
